@@ -1,5 +1,7 @@
 {
   "name": "shareBooks",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
