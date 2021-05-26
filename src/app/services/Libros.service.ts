@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { from } from "rxjs";
 import { IUser, ILibro, IUser2, ILibro2 } from "../Interfaces";
 import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angular/fire/database' ;
-import firebase from 'firebase';
+import firebase from 'firebase' ;
 
 @Injectable()
 
