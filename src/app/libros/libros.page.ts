@@ -9,9 +9,7 @@ import { LibroService } from '../services/Libros.service';
   templateUrl: './libros.page.html',
   styleUrls: ['./libros.page.scss'],
 })
-export class LibrosPage implements OnInit {
 
-  constructor() { }
 export class LibrosPage implements OnInit 
 {
   userid
