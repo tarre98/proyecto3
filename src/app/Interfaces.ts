@@ -18,7 +18,7 @@ export interface ILibro2
     lugar_Recogida : string,
     titulo : string,
     propietario : string,
-    key : string,
+    
 }
 
 export interface IUser
@@ -38,5 +38,5 @@ export interface IUser2
     nombre : string,
     tlf : number,
     preferencias : string,
-    key : string,
+    
 }

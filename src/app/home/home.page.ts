@@ -12,6 +12,9 @@ import { ToastController } from '@ionic/angular';
 
 export class HomePage {
 
+  useridInput: string;
+  pwdInput: string;
+  match=false
   Users: (IUser)[] = [];
   errorMessage: string;
   registro=false
@@ -77,10 +80,49 @@ export class HomePage {
 
   }
 
+
+
+  matchLogin() {
+    
+    this.Users.forEach(user => {
+      if ((user.userid == this.useridInput) && (user.pwd == this.pwdInput)) {
+        this.match = true
+        console.log("match")
+        this.CorrectToast(); 
+ 
+      } else {
+        this.errorMessage = "Contraseña o ususario incorrectos"
+        this.presentToast();
+        this.match=false
+      } 
+    });
+   
+  }
+
   registroVisibility()
   {
     this.registro=true;
     this.login=false;
+    if((this.userIdRegistro,this.pwdRegistro,this.nombreRegistro,this.tlfRegistro,this.preferenciasRegistro) != null){
+      let userInsert:IUser2 ={
+        "userid": this.userIdRegistro,
+        "pwd": this.pwdRegistro,
+        "nombre": this.nombreRegistro,
+        "tlf": this.tlfRegistro,
+        "preferencias":this.preferenciasRegistro,
+    }
+
+    let ref1 = this._Libroservice.setUser(userInsert);
+    this.errorMessage = "Usuario insertado"
+    this.presentToast();
+    this.registro=false;
+    this.login=true;     
+    location.reload()
+
+    }
+   
+     
+     
   }
    
   changeRegistroVisibility()
