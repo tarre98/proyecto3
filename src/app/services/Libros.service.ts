@@ -41,6 +41,10 @@ export class LibroService
     {
         this._db.database.ref('libros/'+userid).remove();
     }
+    deleteBook(userid)
+    {
+        this._db.database.ref('libros/'+userid).remove();  
+    }
     
 
 }

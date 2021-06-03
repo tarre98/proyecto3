@@ -86,20 +86,46 @@ export class LibrosPage implements OnInit
     this.visibleMenu=false;
     this.visibleUpdate=true;
 
-    
+    let libroInsert:ILibro2 ={
+      "idLibro": this.idLibroInput,
+      "titulo": this.tituloInput,
+      "categoria": this.categoriaInput,
+      "editorial": this.editorialInput,
+      "propietario": this.propietarioInput,
+      "lugar_Recogida":this.lugarRecogidaInput,
+}
+    console.log("he entrado")
+   let ref = this._Libroservice.deleteBook(key);
+    let ref1 = this._Libroservice.setLibro(libroInsert);
   
 }
 
   deleteBook(key)
   {   
     console.log(key)
-
+    let ref = this._Libroservice.deleteBook(key);
     
   }
 
   changeVisibilityMenuInput()
   {   
-
+    let libroInsert:ILibro2 ={
+      "idLibro": this.idLibroInput,
+      "titulo": this.tituloInput,
+      "categoria": this.categoriaInput,
+      "editorial": this.editorialInput,
+      "propietario": this.propietarioInput,
+      "lugar_Recogida":this.lugarRecogidaInput,
+}
+    this.visibleInput=true;
+    this.visibleMenu=false;
+    let ref = this._Libroservice.setLibro(libroInsert);
+    if(this.visibleMenu==false)
+    {
+    this.visibleInput=false;
+    this.visibleMenu=true;
+    location.reload();
+    }
 
   }
 
