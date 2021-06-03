@@ -67,4 +67,19 @@ export class UsuarioInfoPage implements OnInit {
     
   }
 
+  updateUser(){ 
+    let userInsert:IUser2 =
+      {
+        "userid": this.userid,
+        "pwd": this.pwdInput,
+        "nombre": this.nombreInput,
+        "tlf": this.telefonoInput,
+        "preferencias":this.preferenciasInput,
+      }
+    console.log("he entrado")
+    let ref = this._Libroservice.deleteUser( this.key);
+    let ref1 = this._Libroservice.setUser(userInsert);
+      
+  }
+
 }
