@@ -2,9 +2,27 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Carga hostia</ion-title>
+      <ion-title size="large">ShareBooks</ion-title>
     </ion-toolbar>
   </ion-header>
+
+   <div  *ngIf="match == false && login==true">
+    <strong>Login</strong>
+
+    <ion-item>
+      <ion-label position="floating">User</ion-label>
+      <ion-input [(ngModel)]="useridInput"></ion-input>
+    </ion-item>
+    <ion-item>
+
+      <ion-label position="floating">PassWord</ion-label>
+      <ion-input [(ngModel)]="pwdInput"></ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-button (click)="matchLogin()" >Login</ion-button>
+
+    </ion-item> 
 
   <strong *ngIf="registro == true">Registro</strong>
 
