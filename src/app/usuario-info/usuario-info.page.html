@@ -1,42 +1,33 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>usuario-info</ion-title>
+    <ion-title>usuarioInfo</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
   <ion-item>
-
     <ion-label position="floating">Nombre</ion-label>
-    <ion-input [(ngModel)]="nombreInput"  value="{{nombre}}">
-
-    </ion-input>
+    <ion-input [(ngModel)]="nombreInput"  value="{{nombre}}"></ion-input>
   </ion-item>
-  <ion-item>
 
+  <ion-item>
     <ion-label position="floating">Telefono</ion-label>
-    <ion-input [(ngModel)]="telefonoInput"  value="{{telefono}}">
-
-    </ion-input>
+    <ion-input [(ngModel)]="telefonoInput"  value="{{telefono}}"></ion-input>
   </ion-item>
-  <ion-item>
 
+  <ion-item>
     <ion-label position="floating">Preferencias</ion-label>
-    <ion-input [(ngModel)]="preferenciasInput"  value="{{preferencias}}">
-
-    </ion-input>
+    <ion-input [(ngModel)]="preferenciasInput"  value="{{preferencias}}"></ion-input>
   </ion-item>
+
   <ion-item>
-
     <ion-label position="floating">Password</ion-label>
-    <ion-input [(ngModel)]="pwdInput"  value="{{pwd}}">
-
-    </ion-input>
+    <ion-input [(ngModel)]="pwdInput"  value="{{pwd}}"></ion-input>
   </ion-item>
-  <ion-item >
-    <ion-button (click)="updateUser()"  >Update Usuario</ion-button>
 
+  <ion-item >
+    <ion-button (click)="updateUser()">Update Usuario</ion-button>
   </ion-item>
 
 </ion-content>

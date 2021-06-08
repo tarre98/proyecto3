@@ -4,14 +4,18 @@ import { ToastController } from '@ionic/angular';
 import { ILibro, ILibro2 } from '../Interfaces';
 import { LibroService } from '../services/Libros.service';
 
-@Component({
+
+@Component(
+  {
   selector: 'app-libros',
   templateUrl: './libros.page.html',
   styleUrls: ['./libros.page.scss'],
-})
+  })
 
-export class LibrosPage implements OnInit 
+
+export class LibrosPage implements OnInit
 {
+
   userid
   Libros: (ILibro)[] = [];
   titulo
@@ -32,9 +36,11 @@ export class LibrosPage implements OnInit
   visibleMenu=true
   visibleUpdate=false
 
+
   constructor(private _toastCtrl: ToastController ,private _Libroservice: LibroService,private _activateRoute: ActivatedRoute) 
-  {   
+  {
   }
+
 
   ngOnInit() 
   {
@@ -44,45 +50,45 @@ export class LibrosPage implements OnInit
     ref.once("value", snapshot => {
 
       snapshot.forEach(child => {
-       console.log("he encontrado " + child.val().userid);
+        console.log("he encontrado " + child.val().userid);
         let libro: ILibro = {
-         "idLibro": child.val().idLibro,
-         "categoria": child.val().categoria,
-         "titulo": child.val().titulo,
-         "editorial": child.val().editorial,
-         "lugar_Recogida": child.val().lugar_Recogida,
-         "propietario": child.val().propietario,
-         "key": child.key
-      }
+          "idLibro": child.val().idLibro,
+          "categoria": child.val().categoria,
+          "titulo": child.val().titulo,
+          "editorial": child.val().editorial,
+          "lugar_Recogida": child.val().lugar_Recogida,
+          "propietario": child.val().propietario,
+          "key": child.key
+        }
 
-        if ( child.val().propietario==this.userid ) 
+        if(child.val().propietario==this.userid)
         {
           this.Libros.push(libro)
         }
 
-      console.log(this.Libros)
+        console.log(this.Libros)
+      })
 
     })
 
-  })
-
-}
-
+  }
+  
   updateBook(key)
   { 
     this.Libros.forEach(libro =>{
-    if(libro.key==key)
-    {
+      if(libro.key==key)
+      {
       this.titulo=libro.titulo
       this.idLibro=libro.idLibro
       this.categoria=libro.categoria
       this.editorial=libro.editorial
       this.propietario=libro.propietario
       this.lugarRecogida=libro.lugar_Recogida
-      console.log( this.titulo)
-    }
+      console.log( this.titulo)  
+      }
 
     })
+
     this.visibleMenu=false;
     this.visibleUpdate=true;
 
@@ -93,19 +99,21 @@ export class LibrosPage implements OnInit
       "editorial": this.editorialInput,
       "propietario": this.propietarioInput,
       "lugar_Recogida":this.lugarRecogidaInput,
-}
+    }
+
     console.log("he entrado")
-   let ref = this._Libroservice.deleteBook(key);
+    let ref = this._Libroservice.deleteBook(key);
     let ref1 = this._Libroservice.setLibro(libroInsert);
-  
-}
+    
+  }
+
 
   deleteBook(key)
   {   
     console.log(key)
-    let ref = this._Libroservice.deleteBook(key);
-    
+    let ref = this._Libroservice.deleteBook(key);     
   }
+
 
   changeVisibilityMenuInput()
   {   
@@ -116,18 +124,20 @@ export class LibrosPage implements OnInit
       "editorial": this.editorialInput,
       "propietario": this.propietarioInput,
       "lugar_Recogida":this.lugarRecogidaInput,
-}
+    }
+
     this.visibleInput=true;
     this.visibleMenu=false;
     let ref = this._Libroservice.setLibro(libroInsert);
+
     if(this.visibleMenu==false)
     {
-    this.visibleInput=false;
-    this.visibleMenu=true;
-    location.reload();
+      this.visibleInput=false;
+      this.visibleMenu=true;
+      location.reload();
     }
-
+      
   }
-
-
+ 
+  
 }
