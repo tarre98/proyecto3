@@ -83,21 +83,26 @@ export class HomePage
   }
 
 
-  matchLogin() 
-  {
-     this.Users.forEach(user => {
+  matchLogin() {
+
+    this.Users.forEach(user => {
       if ((user.userid == this.useridInput) && (user.pwd == this.pwdInput)) {
-         this.match = true
-         console.log("match")
-         this.CorrectToast(); 
-  
-       } else {
-         this.errorMessage = "Contraseña o ususario incorrectos"
-         this.presentToast();
-         this.match=false
-       } 
+        this.match = true
+        console.log("match")
+        this.CorrectToast(); 
+
+      }
+
     });
-    
+
+    if(this.match==false){
+
+        this.errorMessage = "Contraseña o ususario incorrectos"
+          this.presentToast();
+          this.match=false
+
+    }
+
   }
   
   registroVisibility()
