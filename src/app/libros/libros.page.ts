@@ -35,7 +35,8 @@ export class LibrosPage implements OnInit
   visibleInput=false
   visibleMenu=true
   visibleUpdate=false
-
+  useridFilter
+  categoriaFilter
 
   constructor(private _toastCtrl: ToastController ,private _Libroservice: LibroService,private _activateRoute: ActivatedRoute) 
   {
@@ -61,12 +62,9 @@ export class LibrosPage implements OnInit
           "key": child.key
         }
 
-        if(child.val().propietario==this.userid)
-        {
           this.Libros.push(libro)
-        }
+          console.log(this.Libros)
 
-        console.log(this.Libros)
       })
 
     })
@@ -139,5 +137,112 @@ export class LibrosPage implements OnInit
       
   }
  
-  
+  myBooks(){
+    this.Libros = []
+    this.userid =this._activateRoute.snapshot.paramMap.get('useridInput');
+    console.log(this.userid)
+    let ref = this._Libroservice.GetLibros();
+    ref.once("value", snapshot => {
+
+      snapshot.forEach(child => {
+        console.log("he encontrado " + child.val().userid);
+        let libro: ILibro = {
+          "idLibro": child.val().idLibro,
+          "categoria": child.val().categoria,
+          "titulo": child.val().titulo,
+          "editorial": child.val().editorial,
+          "lugar_Recogida": child.val().lugar_Recogida,
+          "propietario": child.val().propietario,
+          "key": child.key
+        }
+        if(child.val().propietario==this.userid){
+          this.Libros.push(libro)
+
+        }
+        console.log(this.Libros)
+      })
+
+    })
+  }
+  allBooks(){
+    this.Libros = []
+    this.userid =this._activateRoute.snapshot.paramMap.get('useridInput');
+    console.log(this.userid)
+    let ref = this._Libroservice.GetLibros();
+    ref.once("value", snapshot => {
+
+      snapshot.forEach(child => {
+        console.log("he encontrado " + child.val().userid);
+        let libro: ILibro = {
+          "idLibro": child.val().idLibro,
+          "categoria": child.val().categoria,
+          "titulo": child.val().titulo,
+          "editorial": child.val().editorial,
+          "lugar_Recogida": child.val().lugar_Recogida,
+          "propietario": child.val().propietario,
+          "key": child.key
+        }
+          this.Libros.push(libro)
+
+
+        console.log(this.Libros)
+      })
+
+    })
+  }
+  userIDfilter(){
+    this.Libros = []
+    this.userid =this._activateRoute.snapshot.paramMap.get('useridInput');
+    console.log(this.userid)
+    let ref = this._Libroservice.GetLibros();
+    ref.once("value", snapshot => {
+
+      snapshot.forEach(child => {
+        console.log("he encontrado " + child.val().userid);
+        let libro: ILibro = {
+          "idLibro": child.val().idLibro,
+          "categoria": child.val().categoria,
+          "titulo": child.val().titulo,
+          "editorial": child.val().editorial,
+          "lugar_Recogida": child.val().lugar_Recogida,
+          "propietario": child.val().propietario,
+          "key": child.key
+        }
+        if(child.val().propietario==this.useridFilter){
+          this.Libros.push(libro)
+
+        }
+        console.log(this.Libros)
+      })
+
+    })
+
+  }
+  categoryFilter(){
+    this.Libros = []
+    this.userid =this._activateRoute.snapshot.paramMap.get('useridInput');
+    console.log(this.userid)
+    let ref = this._Libroservice.GetLibros();
+    ref.once("value", snapshot => {
+
+      snapshot.forEach(child => {
+        console.log("he encontrado " + child.val().userid);
+        let libro: ILibro = {
+          "idLibro": child.val().idLibro,
+          "categoria": child.val().categoria,
+          "titulo": child.val().titulo,
+          "editorial": child.val().editorial,
+          "lugar_Recogida": child.val().lugar_Recogida,
+          "propietario": child.val().propietario,
+          "key": child.key
+        }
+        if(child.val().categoria==this.categoriaFilter){
+          this.Libros.push(libro)
+
+        }
+        console.log(this.Libros)
+      })
+
+    })
+  }
 }

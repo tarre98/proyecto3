@@ -13,10 +13,37 @@
       <ion-button (click)="changeVisibilityMenuInput()">Input</ion-button>
     </ion-item>
 
+    <ion-item>
+      <ion-button (click)="myBooks()">Buscar mis Libros</ion-button>
+    </ion-item>
+
+    <ion-item>
+      <ion-button (click)="allBooks()">Buscar Todos los libros</ion-button>
+    </ion-item>
+    
+    <strong>FILTRAR</strong>
+
+    <ion-item>
+      <ion-label position="floating">UserID</ion-label>
+      <ion-input [(ngModel)]="useridFilter" ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-button (click)="userIDfilter()">Filtrar ID</ion-button>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Categoria</ion-label>
+      <ion-input [(ngModel)]="categoriaFilter"></ion-input>
+    </ion-item>
+
+    <ion-button (click)="categoryFilter()"> Filtrar Categoria </ion-button>
+
+
     <ion-card *ngFor="let item of Libros">
 
       <ion-card-header>
-        <ion-card-title>Producto {{item.titulo}} ({{item.categoria}} €)</ion-card-title>
+        <ion-card-title>Libro {{item.titulo}} Categoria : {{item.categoria}} )</ion-card-title>
       </ion-card-header>
 
       <ion-card-content>
@@ -25,11 +52,11 @@
         {{item.editorial}}
         <br>
 
-        <ion-label>Descripcion :</ion-label>
+        <ion-label>Lugar de recogida :</ion-label>
         {{item.lugar_Recogida}}
         <br>
 
-        <ion-label>Descripcion :</ion-label>
+        <ion-label>Propietario :</ion-label>
         {{item.propietario}}
         <br>
 
