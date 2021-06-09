@@ -15,10 +15,10 @@ import { ToastController } from '@ionic/angular';
 
 export class HomePage
  {
-   useridInput: string;
-   pwdInput: string;
+    useridInput: string;
+    pwdInput: string;
     Users: (IUser)[] = [];
-   match=false
+    match=false
     errorMessage: string;
     registro=false
     login=true
@@ -41,7 +41,7 @@ export class HomePage
     ref.once("value", snapshot => {
 
       snapshot.forEach(child => {
-        console.log("he encontrado " + child.val().userid);
+        console.log("he encontrado " + child.val().userid + child.val().pwd );
         let user: IUser = {
           "userid": child.val().userid,
           "pwd": child.val().pwd,
@@ -51,6 +51,7 @@ export class HomePage
           "key": child.key
         }
         this.Users.push(user)
+        console.log(this.Users)
       })
     })
 
@@ -126,16 +127,15 @@ export class HomePage
       this.presentToast();
       this.registro=false;
       this.login=true;     
+      this.userIdRegistro="";
+      this.pwdRegistro="";
+      this.preferenciasRegistro="";
+      this.nombreRegistro="";
+      this.tlfRegistro=null;  
       location.reload()
     }
       
   }
 
-
-  changeRegistroVisibility()
-  {
-  }
-  
-  
 }
 
