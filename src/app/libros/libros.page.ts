@@ -37,6 +37,8 @@ export class LibrosPage implements OnInit
   visibleUpdate=false
   useridFilter
   categoriaFilter
+  booksMine=false
+  contador: number;
 
   constructor(private _toastCtrl: ToastController ,private _Libroservice: LibroService,private _activateRoute: ActivatedRoute) 
   {
@@ -116,7 +118,7 @@ export class LibrosPage implements OnInit
   changeVisibilityMenuInput()
   {   
     let libroInsert:ILibro2 ={
-      "idLibro": this.idLibroInput,
+      "idLibro": this.Libros.length+1,
       "titulo": this.tituloInput,
       "categoria": this.categoriaInput,
       "editorial": this.editorialInput,
@@ -134,10 +136,12 @@ export class LibrosPage implements OnInit
       this.visibleMenu=true;
       location.reload();
     }
-      
+    this.contador++
   }
  
-  myBooks(){
+  myBooks()
+  {
+    this.booksMine =true
     this.Libros = []
     this.userid =this._activateRoute.snapshot.paramMap.get('useridInput');
     console.log(this.userid)
@@ -164,7 +168,11 @@ export class LibrosPage implements OnInit
 
     })
   }
-  allBooks(){
+
+
+  allBooks()
+  {
+    this.booksMine = false;
     this.Libros = []
     this.userid =this._activateRoute.snapshot.paramMap.get('useridInput');
     console.log(this.userid)
@@ -190,7 +198,10 @@ export class LibrosPage implements OnInit
 
     })
   }
-  userIDfilter(){
+
+
+  userIDfilter()
+  {
     this.Libros = []
     this.userid =this._activateRoute.snapshot.paramMap.get('useridInput');
     console.log(this.userid)
@@ -218,12 +229,15 @@ export class LibrosPage implements OnInit
     })
 
   }
-  categoryFilter(){
+
+
+  categoryFilter()
+  {
     this.Libros = []
     this.userid =this._activateRoute.snapshot.paramMap.get('useridInput');
     console.log(this.userid)
     let ref = this._Libroservice.GetLibros();
-    ref.once("value", snapshot => {
+    ref.once("value", snapshot => {   
 
       snapshot.forEach(child => {
         console.log("he encontrado " + child.val().userid);
@@ -244,5 +258,7 @@ export class LibrosPage implements OnInit
       })
 
     })
+
   }
+
 }
