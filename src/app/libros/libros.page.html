@@ -24,7 +24,7 @@
     <strong>FILTRAR</strong>
 
     <ion-item>
-      <ion-label position="floating">UserID</ion-label>
+      <ion-label position="floating">Propietario</ion-label>
       <ion-input [(ngModel)]="useridFilter" ></ion-input>
     </ion-item>
 
@@ -43,7 +43,8 @@
     <ion-card *ngFor="let item of Libros">
 
       <ion-card-header>
-        <ion-card-title>Libro {{item.titulo}} Categoria : {{item.categoria}} )</ion-card-title>
+        <ion-card-title>Libro: {{item.titulo}}</ion-card-title>
+        <ion-card-title>Categoria : {{item.categoria}}</ion-card-title>
       </ion-card-header>
 
       <ion-card-content>
@@ -138,7 +139,7 @@
     </ion-item>
     
     <ion-item>
-      <ion-button (click)="changeVisibilityMenuInput()">Insertar Libro</ion-button>
+      <ion-button (click)="changeVisibilityMenuInput()">Modificar Libro</ion-button>
     </ion-item>
   
   </div>
