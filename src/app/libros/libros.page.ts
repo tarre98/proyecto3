@@ -30,7 +30,7 @@ export class LibrosPage implements OnInit
   lugarRecogidaInput
   propietarioInput
   idLibroInput
-  key
+  keyUser
   cargado=false
   visibleInput=false
   visibleMenu=true
@@ -98,7 +98,7 @@ export class LibrosPage implements OnInit
       this.editorial=libro.editorial
       this.propietario=libro.propietario
       this.lugarRecogida=libro.lugar_Recogida
-      this.key=key
+      this.keyUser=key
       console.log( this.titulo)  
       }
 
@@ -142,13 +142,13 @@ export class LibrosPage implements OnInit
  
   changeVisibilityMenuUpdate(){   
     
-    if(this.idLibroInput == null || this.tituloInput == null || this.categoriaInput == null || this.editorialInput == null || this.propietarioInput == null || this.lugarRecogidaInput == null )
+    if(this.tituloInput == null || this.categoriaInput == null || this.editorialInput == null || this.propietarioInput == null || this.lugarRecogidaInput == null )
     {
       this.errorMessage = "debes introducir todos los campos"
       this.presentToast();
     }else
       {
-    console.log(this.key)
+    console.log(this.keyUser)
     
     let libroInsert:ILibro2 =
     {
@@ -163,7 +163,7 @@ export class LibrosPage implements OnInit
   this.visibleInput=false;
   this.visibleMenu=true;
   this.visibleUpdate=false;
-    let ref2 = this._Libroservice.deleteBook(this.key);
+    let ref2 = this._Libroservice.deleteBook(this.keyUser);
     let ref1 = this._Libroservice.setLibro(libroInsert);  
     location.reload();
 
