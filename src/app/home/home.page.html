@@ -5,12 +5,16 @@
     </ion-toolbar>
   </ion-header>
 
-
+  <!-- Condicion donde solo se cargara mientras no se le de a ningún botón o coincidan usuario&password -->
   <div  *ngIf="match == false && login==true">
     <strong>Login</strong>
 
     <ion-item>
+      
+  <!-- Label que marca "User" encima del input -->
       <ion-label position="floating">User</ion-label>
+      
+  <!-- Lo que rellene en el input rellena la variable useridInput en el .ts-->
       <ion-input [(ngModel)]="useridInput"></ion-input>
     </ion-item>
 
@@ -20,6 +24,8 @@
     </ion-item>
 
     <ion-item>
+      
+  <!-- Boton de login, que llama la función de matchlogin en el-->
       <ion-button (click)="matchLogin()" >Login</ion-button>
     </ion-item> 
 
@@ -30,6 +36,7 @@
   </div>
 
 
+  <!-- Registro en el .ts esta en false -->
   <strong *ngIf="registro == true">Registro</strong>
 
   <ion-item *ngIf="registro == true">
@@ -62,6 +69,8 @@
   </ion-item>
 
 
+  
+  <!-- cuando coincide el match con el usuario registrado o que estaba en el firebase, genera los botones(rutas) para ir a visualizar tanto /libros como /usuario -->
   <div  *ngIf="match == true"> 
 
     <ion-item >

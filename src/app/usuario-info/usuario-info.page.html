@@ -4,6 +4,9 @@
   </ion-toolbar>
 </ion-header>
 
+
+<!-- MODIFICAR USUARIO -->
+<!-- RECARGAMOS LOS VALORES CON LO QUE TRAE DEL TS (DE EL USUARIO CON EL QUE HAS INICIADO SESIÓN)-->
 <ion-content>
 
   <ion-item>
@@ -26,6 +29,7 @@
     <ion-input [(ngModel)]="pwdInput"  value="{{pwd}}"></ion-input>
   </ion-item>
 
+  <!-- navegación al home una vez comprobada que lo has editado bien -->
   <ion-item >
     <ion-button (click)="updateUser()" [routerLink]="['/home']">Update Usuario</ion-button>
   </ion-item>

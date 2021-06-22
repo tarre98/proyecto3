@@ -39,7 +39,7 @@
 
     <ion-button (click)="categoryFilter()"> Filtrar Categoria </ion-button>
 
-
+    <!--Mostrará 1card = hijo de libro en el firebse -->
     <ion-card *ngFor="let item of Libros">
 
       <ion-card-header>
@@ -61,6 +61,7 @@
         {{item.propietario}}
         <br>
 
+        <!-- comprueba que sea el libro tuyo, y podrás ver esos botones si son tuyos-->
         <ion-button *ngIf="booksMine==true" (click)="deleteBook(item.key)">Eliminar</ion-button>
         <ion-button *ngIf="booksMine==true" (click)="updateBook(item.key)">Modificar</ion-button>
 
@@ -99,7 +100,7 @@
     </ion-item>
 
  
-    
+    <!--Hace funcion a change, que ella hace el set de ese libro-->
     <ion-item>
       <ion-button (click)="changeVisibilityMenuInput()">Insertar Libro</ion-button>
     </ion-item>
@@ -134,7 +135,7 @@
     </ion-item>
 
    
-    
+        <!--Hace funcion a change, que ella hace el delete,y luego set de ese libro-->
     <ion-item>
       <ion-button (click)="changeVisibilityMenuUpdate()">Modificar Libro</ion-button>
     </ion-item>

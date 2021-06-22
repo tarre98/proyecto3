@@ -11,6 +11,7 @@ import {AngularFireDatabaseModule} from '@angular/fire/database';
 import { environment } from 'src/environments/environment';
 import { LibroService} from './services/Libros.service';
 
+//importamos el firebase en la aplicación
 
 @NgModule({
   declarations: [AppComponent],

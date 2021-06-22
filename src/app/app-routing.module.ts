@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
+//rutas para navegar
+
+
 const routes: Routes = [
   {
     path: 'home',
@@ -12,10 +15,12 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
+    //  Pasamos la variable useridinput desde el home
     path: 'libros/:useridInput',
     loadChildren: () => import('./libros/libros.module').then( m => m.LibrosPageModule)
   },
   {
+    //  Pasamos la variable useridinput desde el home
     path: 'usuario-info/:useridInput',
     loadChildren: () => import('./usuario-info/usuario-info.module').then( m => m.UsuarioInfoPageModule)
   },

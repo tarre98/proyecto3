@@ -16,6 +16,7 @@ import { LibroService } from '../services/Libros.service';
 export class UsuarioInfoPage implements OnInit
 {
 
+  //declaramos variables
   userid
   Users: (IUser)[] = [];
   nombre
@@ -28,16 +29,19 @@ export class UsuarioInfoPage implements OnInit
   pwd: string;
   pwdInput: string;
 
+  //declaramos toast y para poder pasar parametros (user id)
   constructor(private _toastCtrl: ToastController ,private _Libroservice: LibroService,private _activateRoute: ActivatedRoute) 
   {  
   }
 
   ngOnInit() 
   {
+    //recoge usuario idinput
     this.userid =this._activateRoute.snapshot.paramMap.get('useridInput');
     console.log(this.userid)
     let ref = this._Libroservice.GetUsers();
 
+    //cargamos todos
     ref.once("value", snapshot => {
 
       snapshot.forEach(child => {
@@ -51,15 +55,20 @@ export class UsuarioInfoPage implements OnInit
           "key": child.key
         }
 
+        
         this.Users.push(user)
         console.log(this.Users)
       })
 
     })
+
+    // comprueba el user que concuerda con la id 
     .then(()=>{this.Users.forEach(user=>{
 
+      // si es el mismo
       if(user.userid == this.userid)
       {
+        //muestra:
         this.nombre=user.nombre
         this.preferencias=user.preferencias
         this.telefono=user.tlf
@@ -75,9 +84,10 @@ export class UsuarioInfoPage implements OnInit
 
   }
 
-
+  // cuando le das a el botón de modificar:
   updateUser()
   { 
+    //se recoge en la interfaz 
     let userInsert:IUser2 ={
           "userid": this.userid,
           "pwd": this.pwdInput,
@@ -86,7 +96,8 @@ export class UsuarioInfoPage implements OnInit
           "preferencias":this.preferenciasInput,
     }
     console.log("he entrado")
-
+    
+    //Utilizamos el delete y set como update
     let ref = this._Libroservice.deleteUser( this.key);
     let ref1 = this._Libroservice.setUser(userInsert);
       
